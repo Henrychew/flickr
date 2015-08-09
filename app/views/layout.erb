@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <!-- CSS -->
+    <link rel="stylesheet" href="/css/normalize.css">
+    <link rel="stylesheet" href="/css/application.css">
+    <!-- jquey -->
+    <script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+    <!-- javascript -->
+    <script src="/js/application.js"></script>
+  </head>
+
+  <body>
+
+    <div class="navbar">
+      <div class ="container">
+      <h2>Welcome to Flickr!</h2>
+      <% if session[:id] %>
+        <a href="/albums">Your Albums</a>
+        <a id="logout" href="/logout">Logout</a>
+     
+      <% end %>
+
+        <% if @user && !@user.errors.empty? %>
+        <% @user.errors.full_messages.each do |e| %>
+        <p>Error message:<%= e %></p>
+        <% end %>
+        <% end %>
+        </div>
+    </div>
+    <%= yield %>
+
+    <script>
+    $("#logout").click(function(e){
+      e.preventDefault();
+      $.ajax({
+      type: "DELETE",
+      url: "/logout"
+      }).done(function(){
+      window.location = "/"
+      })
+    })
+    </script>
+    
+  </body>
+
+</html>

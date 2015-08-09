@@ -1,0 +1,11 @@
+
+<div class = "container">
+	<h4>Photo Owner: <%= @photo.user.username %></h4>
+	<h4>Album: <%= @album.name %></h4>
+	<h5>Description: <%= @photo.description %></h5>
+
+
+      <img src="<%= @photo.file.thumb.url %>"></img>
+	
+</div>
+

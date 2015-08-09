@@ -1,0 +1,27 @@
+<div class ="container">
+  <h2>Album: <%= @album.name.upcase %></h2>
+  <% @photos.each do |photo| %>
+    <a href="/photos/<%= photo.id %>">
+      <img src="<%= photo.file.thumb.url %>"></img>
+    </a>
+  <% end %>
+
+
+  <form action="/albums/<%= @album.id %>/photos/create" method="post" enctype="multipart/form-data">
+    <h3>Add a Photo</h3>  
+
+    <div>
+      <label> Describe it: </label>
+      <input type="text" name="photo[description]" placeholder ="photo description">
+    </div>
+
+    <div>
+      <label>Upload it:</label>
+      <input type="file" name="photo[file]">
+    </div>
+<br>
+    <input type="submit" value="Add!">
+
+  </form>
+
+</div>

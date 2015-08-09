@@ -1,0 +1,17 @@
+<div class ="container">
+	<h1>Your Albums</h1>
+	<% @albums.each_with_index do |album, index| %>
+	  <a href="/albums/<%= album.id %>">
+	    <p><%= "#{index + 1}. #{album.name}" %></p>
+	  </a>
+	<% end %>
+</div>
+
+<!-- CREATE NEW ALBUM -->
+<div class ="container">
+	<h5>Create new album</h5>
+	<form action="/albums/create" method="post">
+		<input type="text" name="album[name]" placeholder = "album name">
+		<input type="submit" value="Create Album">
+	</form>
+</div>
